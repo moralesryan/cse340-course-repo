@@ -1,15 +1,41 @@
 import express from 'express';
 
-const NODE_ENV = 'production';
-const PORT = 3000;
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const NODE_ENV = process.env.NODE_ENV?.toLowerCase() || "production";
+const PORT = process.env.PORT || 3000;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
+/**
+  * Configure Express middleware
+  */
+
+// Serve static files from the public directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+/** 
+  * Routes to the html files
+  */
 app.get('/', (req, res) => {
-    res.send('Hello from Express!');
+  res.sendFile(path.join(__dirname, 'public/src/views/home.html'));
 });
 
+app.get('/organizations', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/src/views/organizations.html'));
+});
+
+app.get('/projects', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/src/views/projects.html'));
+});
+
+
 app.listen(PORT, () => {
-    console.log(`Server is running at http://127.0.0.1:${PORT}`);
-    console.log(`Environment: ${NODE_ENV}`);
-}); 
+  console.log(`Server is running at http://127.0.0.1:${PORT}`);
+  console.log(`Environment: ${NODE_ENV}`);
+});     

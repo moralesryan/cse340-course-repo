@@ -1,31 +1,238 @@
-html,
-body {
-    background-color: lightblue;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
+:root {
+    --ink: #23301F;
+    --cream: #FAF7F0;
+    --moss: #3F6B4A;
+    --moss-dark: #2E5038;
+    --gold: #C89B3C;
+    --sage: #E8EEE2;
+    --max-width: 760px;
 }
 
+* {
+    box-sizing: border-box;
+}
+
+html,
 body {
-    nav {
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
+    margin: 0;
+    padding: 0;
+    background-color: var(--cream);
+    color: var(--ink);
+    font-family: 'Karla', Arial, sans-serif;
+    line-height: 1.6;
+}
 
-        li {
-            display: inline;
-            margin-right: 15px;
-        }
+h1,
+h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    line-height: 1.2;
+    margin-top: 0;
+}
 
-        a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
+h1 {
+    font-size: 2.25rem;
+    font-weight: 600;
+}
 
-            &:hover {
-                color: #0066cc;
-            }
-        }
+h2 {
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: var(--moss-dark);
+}
+
+a {
+    color: var(--moss-dark);
+}
+
+a:hover,
+a:focus-visible {
+    color: var(--gold);
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+}
+
+/* Nav */
+.site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 18px 24px;
+    background-color: var(--cream);
+    border-bottom: 1px solid var(--sage);
+    position: sticky;
+    top: 0;
+}
+
+.site-nav .brand {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: var(--ink);
+}
+
+.site-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 22px;
+    padding: 0;
+    margin: 0;
+}
+
+.site-nav a {
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+    color: var(--moss-dark);
+    border-bottom-color: var(--gold);
+}
+
+/* Main content container */
+main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+}
+
+/* Hero */
+.hero {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.hero-text {
+    flex: 1 1 320px;
+}
+
+.hero-image {
+    flex: 0 1 220px;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--sage);
+    background-color: var(--sage);
+    padding: 12px;
+}
+
+@media (max-width: 640px) {
+    .hero {
+        flex-direction: column-reverse;
+        text-align: left;
+    }
+}
+
+/* Category chips */
+.chip-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.chip {
+    background-color: var(--moss);
+    color: var(--cream);
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+/* Organization cards */
+.org-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.org-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background-color: var(--sage);
+    border-radius: 10px;
+    padding: 14px 18px;
+}
+
+.org-card img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    border-radius: 8px;
+    background-color: var(--cream);
+    padding: 6px;
+    flex-shrink: 0;
+}
+
+.org-card div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.org-card strong {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+}
+
+/* Project cards */
+.project-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.project-card {
+    border: 1px solid var(--sage);
+    border-left: 4px solid var(--moss);
+    border-radius: 8px;
+    padding: 16px 20px;
+}
+
+.project-card strong {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.project-card p {
+    margin: 0;
+}
+
+/* Footer */
+footer {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 24px;
+    border-top: 1px solid var(--sage);
+    color: var(--moss-dark);
+    font-size: 0.9rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
     }
 }

@@ -6,10 +6,11 @@
         </h1>
         <p>Explore our service categories:</p>
         <ul class="chip-list">
-            <li class="chip">Environmental</li>
-            <li class="chip">Educational</li>
-            <li class="chip">Community Service</li>
-            <li class="chip">Health and Wellness</li>
+            <% categories.forEach(function(category) { %>
+                <li class="chip">
+                    <%= category.category_name %>
+                </li>
+                <% }) %>
         </ul>
     </main>
 

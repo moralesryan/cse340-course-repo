@@ -53,7 +53,7 @@ CREATE TABLE categories (
 
 INSERT INTO categories (category_name)
 VALUES 
-('Food Drive'), ('Youth Mentoring'), ('Environmental convservation');
+('Food Drive'), ('Youth Mentoring'), ('Environmental convservation'), ('Health & Wellness'), ('Education');
 
 SELECT * FROM categories;
 

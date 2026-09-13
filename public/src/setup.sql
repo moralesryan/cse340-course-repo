@@ -60,13 +60,13 @@ SELECT * FROM categories;
 -- CREATE SERVICE CATEGORY TABLE --
 
 CREATE TABLE service_category (
-	category_id INTEGER NOT NULL,
 	project_id INTEGER NOT NULL, 
+	category_id INTEGER NOT NULL,
+	FOREIGN KEY (project_id) REFERENCES service_projects(project_id),
 	FOREIGN KEY (category_id) REFERENCES categories(category_id)
-	FOREIGN KEY (project_id) REFERENCES service_projects(project_id)
-)
+);
 
 -- POPULATE SERVICE CATEGORY TABLE --
 
-INSERT INTO service_category(category_id, project_id)
-VALUES (1, 1), (2, 2), (3, 3);
+INSERT INTO service_category (project_id, category_id)
+VALUES (1,1), (2, 3), (3, 4), (4, 5), (5, 4), (6, 5), (7, 2), (8, 2), (9, 5), (10, 3), (11, 3), (12, 3), (13, 4), (14, 3), (15, 5);

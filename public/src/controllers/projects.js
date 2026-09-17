@@ -1,4 +1,4 @@
-import { getAllProjects, getUpcomingProjects, getProjectDetails } from '../models/projects.js';
+import { getUpcomingProjects, getProjectDetails } from '../models/projects.js';
 
 const NUMBER_OF_UPCOMING_PROJECTS = 5;
 
@@ -9,5 +9,20 @@ const projectsPage = async (req, res) => {
     res.render('projects', { title, projects });
 };
 
-// i was here at step 6.5
-export { projectsPage };
+const projectDetailsPage = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const project = await getProjectDetails(id);
+
+        if (!project) {
+            return res.status(404).send('Project not found');
+        }
+
+        res.render('project', { project });
+    } catch (error) {
+        console.error('Error loading project details page:', error);
+        res.status(500).send('Something went wrong');
+    }
+};
+
+export { projectsPage, projectDetailsPage };

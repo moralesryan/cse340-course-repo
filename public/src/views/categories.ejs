@@ -7,8 +7,10 @@
         <p>Explore our service categories:</p>
         <ul class="chip-list">
             <% categories.forEach(function(category) { %>
-                <li class="chip">
-                    <%= category.category_name %>
+                <li>
+                    <a class="chip" href="/category/<%= category.category_id %>">
+                        <%= category.category_name %>
+                    </a>
                 </li>
                 <% }) %>
         </ul>

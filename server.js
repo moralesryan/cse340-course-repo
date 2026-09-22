@@ -1,8 +1,8 @@
 import express from 'express';
 import { fileURLToPath } from 'url';
 import path from 'path';
-import { testConnection } from './public/src/models/db.js';
-import router from './public/src/routes.js';
+import { testConnection } from './src/models/db.js';
+import router from './src/routes.js';
 
 
 
@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
 // Tell Express where to find your templates
-app.set('views', path.join(__dirname, 'public/src/views'))
+app.set('views', path.join(__dirname, './src/views'))
 
 
 // Middleware to log all incoming requests

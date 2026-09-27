@@ -3,7 +3,9 @@ import express from 'express';
 import { homePage } from './controllers/index.js';
 import { organizationsPage, organizationDetailsPage, newOrganizationPage, addOrganization, organizationValidation, showEditOrganizationForm, processEditOrganizationForm } from './controllers/organizations.js';
 import { projectsPage } from './controllers/projects.js';
-import { categoriesPage, showAssignCategoriesForm, processAssignCategoriesForm } from './controllers/categories.js';
+import {
+    categoriesPage, showAssignCategoriesForm, processAssignCategoriesForm, categoryValidation, newCategoryPage, addCategory, showEditCategoryForm, processEditCategoryForm
+} from './controllers/categories.js';
 import { testErrorPage } from './controllers/errors.js';
 import { projectDetailsPage, processNewProjectForm, showNewProjectForm, projectValidation, showEditProjectForm, processEditProjectForm } from './controllers/projects.js';
 import { categoryDetailsPage } from './controllers/categories.js';
@@ -27,6 +29,10 @@ router.get('/assign-categories/:projectId', showAssignCategoriesForm);
 router.post('/assign-categories/:projectId', processAssignCategoriesForm);
 router.get('/edit-project/:id', showEditProjectForm);
 router.post('/edit-project/:id', processEditProjectForm);
+router.get('/new-category', newCategoryPage);
+router.post('/new-category', categoryValidation, addCategory);
+router.get('/edit-category/:id', showEditCategoryForm);
+router.post('/edit-category/:id', categoryValidation, processEditCategoryForm);
 
 
 // error-handling routes

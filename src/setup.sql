@@ -70,3 +70,28 @@ CREATE TABLE service_category (
 
 INSERT INTO service_category (project_id, category_id)
 VALUES (1,1), (2, 3), (3, 4), (4, 5), (5, 4), (6, 5), (7, 2), (8, 2), (9, 5), (10, 3), (11, 3), (12, 3), (13, 4), (14, 3), (15, 5);
+
+-- CREATE ROLES TABLE -- 
+
+CREATE TABLE roles(
+	role_id SERIAL PRIMARY KEY,
+	role_name VARCHAR(50) UNIQUE NOT NULL,
+	role_description TEXT 
+);
+
+-- POPULATE ROLES TABLE -- 
+
+INSERT INTO roles (role_name, role_description)
+	VALUES ('user', 'Standard user with basic access'), ('admin', 'Administrator with full system access');
+
+
+-- CREATE USERS TABLE --
+
+CREATE TABLE users (
+	user_id SERIAL PRIMARY KEY, 
+	name VARCHAR(100) NOT NULL, 
+	email VARCHAR(100) UNIQUE NOT NULL,
+	password_hash VARCHAR(255) NOT NULL,
+	role_id INTEGER REFERENCES roles(role_id),
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
+);

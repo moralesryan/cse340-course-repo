@@ -9,7 +9,7 @@ import {
 import { testErrorPage } from './controllers/errors.js';
 import { projectDetailsPage, processNewProjectForm, showNewProjectForm, projectValidation, showEditProjectForm, processEditProjectForm } from './controllers/projects.js';
 import { categoryDetailsPage } from './controllers/categories.js';
-import { processUserRegistrationForm, showUserRegistrationForm, showLoginForm, processLoginForm, processLogout, showDashboard, requireLogin, requireRole } from './controllers/users.js';
+import { processUserRegistrationForm, showUserRegistrationForm, showLoginForm, processLoginForm, processLogout, showDashboard, requireLogin, requireRole, showUsersPage } from './controllers/users.js';
 
 const router = express.Router();
 
@@ -52,6 +52,9 @@ router.post('/edit-category/:id', requireRole('admin'), categoryValidation, proc
 // Assigning categories to projects
 router.get('/assign-categories/:projectId', requireRole('admin'), showAssignCategoriesForm);
 router.post('/assign-categories/:projectId', requireRole('admin'), processAssignCategoriesForm);
+
+// Users
+router.get('/users', requireRole('admin'), showUsersPage);
 
 // error-handling routes
 router.get('/test-error', testErrorPage);

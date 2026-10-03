@@ -320,6 +320,73 @@ a.chip:focus-visible {
     border-color: #bee5eb;
 }
 
+/* Users table */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 24px 0;
+    border: 1px solid var(--sage);
+    border-radius: 10px;
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.users-table th,
+.users-table td {
+    padding: 12px 18px;
+    text-align: left;
+}
+
+.users-table thead th {
+    background-color: var(--moss);
+    color: var(--cream);
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.users-table tbody tr {
+    border-bottom: 1px solid var(--sage);
+    transition: background-color 0.2s ease;
+}
+
+.users-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.users-table tbody tr:nth-child(even) {
+    background-color: rgba(232, 238, 226, 0.4);
+}
+
+.users-table tbody tr:hover {
+    background-color: var(--sage);
+}
+
+.users-table td:first-child {
+    font-weight: 500;
+}
+
+/* Role badges */
+.role-badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background-color: var(--sage);
+    color: var(--moss-dark);
+}
+
+.role-badge.admin {
+    background-color: var(--gold);
+    color: var(--ink);
+}
+
 @media (prefers-reduced-motion: reduce) {
     * {
         transition: none !important;

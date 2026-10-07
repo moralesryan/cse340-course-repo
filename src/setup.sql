@@ -95,3 +95,11 @@ CREATE TABLE users (
 	role_id INTEGER REFERENCES roles(role_id),
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
 );
+
+-- CREATE PROJECT VOLUNTEERS TABLE --
+CREATE TABLE project_volunteers (
+user_id  INTEGER NOT NULL REFERENCES users(user_id)ON DELETE CASCADE,
+project_id INTEGER NOT NULL REFERENCES service_projects(project_id) ON DELETE CASCADE, 
+signed_up_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+PRIMARY KEY (user_id, project_id)
+);

@@ -13,6 +13,31 @@
         <% if (user && user.role_name==='admin' ) { %>
             <p><a href="/users">View All Users</a></p>
             <% } %>
+
+                <h2>My Volunteer Projects</h2>
+                <% if (volunteerProjects.length===0) { %>
+                    <p>You haven't signed up to volunteer for any projects yet. <a href="/projects">Browse projects</a>
+                    </p>
+                    <% } else { %>
+                        <ul class="project-list">
+                            <% volunteerProjects.forEach(project=> { %>
+                                <li class="project-card">
+                                    <strong><a href="/project/<%= project.project_id %>">
+                                            <%= project.title %>
+                                        </a></strong>
+                                    <p>
+                                        <%= new Date(project.date).toLocaleDateString('en-US', { year: 'numeric' ,
+                                            month: 'long' , day: 'numeric' }) %>
+                                            · <%= project.location %>
+                                    </p>
+                                    <form action="/project/<%= project.project_id %>/unvolunteer" method="POST">
+                                        <input type="hidden" name="returnTo" value="dashboard">
+                                        <button type="submit" class="btn btn-outline">Remove me</button>
+                                    </form>
+                                </li>
+                                <% }) %>
+                        </ul>
+                        <% } %>
     </main>
 
     <%- include('partials/footer') %>

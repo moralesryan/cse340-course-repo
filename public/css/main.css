@@ -387,6 +387,45 @@ a.chip:focus-visible {
     color: var(--ink);
 }
 
+/* Volunteer box */
+.volunteer-box {
+    margin: 28px 0;
+    padding: 18px 20px;
+    background-color: var(--sage);
+    border-radius: 10px;
+}
+
+.volunteer-status {
+    margin: 0 0 12px;
+    font-weight: 600;
+    color: var(--moss-dark);
+}
+
+.btn {
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 10px 22px;
+    border: 2px solid var(--moss);
+    border-radius: 999px;
+    background-color: var(--moss);
+    color: var(--cream);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover,
+.btn:focus-visible {
+    background-color: var(--gold);
+    border-color: var(--gold);
+    color: var(--ink);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--moss-dark);
+}
+
 @media (prefers-reduced-motion: reduce) {
     * {
         transition: none !important;

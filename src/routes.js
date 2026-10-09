@@ -7,7 +7,7 @@ import {
     categoriesPage, showAssignCategoriesForm, processAssignCategoriesForm, categoryValidation, newCategoryPage, addCategory, showEditCategoryForm, processEditCategoryForm
 } from './controllers/categories.js';
 import { testErrorPage } from './controllers/errors.js';
-import { projectDetailsPage, processNewProjectForm, showNewProjectForm, projectValidation, showEditProjectForm, processEditProjectForm } from './controllers/projects.js';
+import { projectDetailsPage, processNewProjectForm, showNewProjectForm, projectValidation, showEditProjectForm, processEditProjectForm, addVolunteerToProject, removeVolunteerFromProject } from './controllers/projects.js';
 import { categoryDetailsPage } from './controllers/categories.js';
 import { processUserRegistrationForm, showUserRegistrationForm, showLoginForm, processLoginForm, processLogout, showDashboard, requireLogin, requireRole, showUsersPage } from './controllers/users.js';
 
@@ -55,6 +55,10 @@ router.post('/assign-categories/:projectId', requireRole('admin'), processAssign
 
 // Users
 router.get('/users', requireRole('admin'), showUsersPage);
+
+//Volunteering
+router.post('/project/:id/volunteer', requireLogin, addVolunteerToProject);
+router.post('/project/:id/unvolunteer', requireLogin, removeVolunteerFromProject);
 
 // error-handling routes
 router.get('/test-error', testErrorPage);
